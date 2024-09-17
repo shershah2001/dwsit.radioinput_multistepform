@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>multistep form</title>
+    <link rel="stylesheet" href="multiStepForm.css">
+    <script src="multiStepForm.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+    <style>
+        .form-control {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        input[type="radio"]+label {
+            cursor: pointer;
+            outline-color: var(--main-color);
+            border: 1px solid lightgray;
+            padding: 8px 16px;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        input[type="radio"]:checked+label {
+            color: #0060df;
+            border: 2px solid #0060df;
+
+        }
+
+        input:focus-visible {
+            border: none;
+
+        }
+
+        /* 
+        .personal_info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 1rem;
+        } */
+
+        /* select {
+            outline: none;
+            width: 100%;
+            height: rem;
+            padding-left: 0.3rem;
+            background: #fff;
+            border: 1px solid lightgray;
+            border-radius: 0.2rem;
+        } */
+
+        .double_input {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form-wizard">
+        <div class="form_intro">
+            <div class="heading_one">
+                <p>TRIUMPH IMMIGRATION CANADA INC.</p>
+            </div>
+            <div class="body_content">
+                <div class="body_heading ">
+                    <h3>PRELIMINARY ASSESSMENT FORM</h3>
+                </div>
+                <div class="body_para">
+                    <p class="font_size_para">
+                        The information gathered in this document will be used to assess your Canadian
+                        immigration
+                        options and is protected by the College of Immigration and Citizenship Consultants
+                        (CICC)
+                        Code of Professional Conduct and Canadian privacy laws. Your information will be held in
+                        the
+                        strictest of confidence and will not be shared with anyone without your explicit written
+                        consent.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- completed -->
+        <div class="completed" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <h3>Registration Successful!</h3>
+            <p>Your account has been created.</p>
+        </div>
+        <div class="progress-container">
+            <div class="progress"></div>
+            <ol>
+                <!-- <li class="current">Personal Info</li>
+                <li>Contact Info</li>
+                <li>Account Info</li>
+                <li>About</li>
+                <li>Personal Info</li>
+                <li>Contact Info</li>
+                <li>Account Info</li>
+                <li>About</li>
+                <li>About</li> -->
+            </ol>
+        </div>
+        <!-- progress-container -->
+
+        <div class="steps-container">
+            <div class="step">
+                <h3>Personal Information</h3>
+                <div class="personal_info">
+                    <div class="form-control">
+                        <label for="last_name" class="font_size_para font_weight">Last name</label>
+                        <input type="text" name="last_name" placeholder="click here to enter text." required
+                            pattern="^[A-Za-z]{2,}$" />
+                    </div>
+                    <div class="form-control">
+                        <label for="first_name" class="font_size_para font_weight">First name</label>
+                        <input type="text" name="first_name" placeholder="click here to enter text." required
+                            pattern="^[A-Za-z]{2,}$" />
+                    </div>
+                    <div class="form-control" style="display: flex; flex-direction: column;">
+                        <label for="middle_name" class="font_size_para font_weight">Middle name</label>
+                        <input type="text" name="middle_name" placeholder="click here to enter text." required
+                            pattern="^[A-Za-z]{2,}$" />
+                    </div>
+                    <div class="form-control">
+                        <label for="gender" class="font_size_para font_weight">Gender</label>
+                        <input type="text" name="gender" placeholder="click here to enter text." required
+                            pattern="^[A-Za-z]{4,}$" />
+                    </div>
+                    <div class="form-control">
+                        <label for="dateOf_birth" class="font_size_para font_weight">Date of birth</label>
+                        <input type="text" onfocus="(this.type='date')" name="dateOf_birth"
+                            placeholder="click here to enter text." required />
+                    </div>
+                    <div class="form-control">
+                        <label for="countryOf_birth" class="font_size_para font_weight">Country of
+                            birth</label>
+                        <input type="text" name="countryOf_brith" placeholder="click here to enter text." required
+                            pattern="^[A-Za-z]{2,}$" />
+                    </div>
+                    <div class="form-control">
+                        <label for="residence" class="font_size_para font_weight">Country of
+                            residence</label>
+                        <input type="text" name="residence" placeholder="click here to enter text." required
+                            pattern="^[A-Za-z]{2,}$" />
+                    </div>
+                    <div class="form-control">
+                        <label for="passport" class="font_size_para font_weight">Country that is issued your
+                            passport</label>
+                        <input type="text" name="passport" placeholder="click here to enter text." required
+                            pattern="^[A-Za-z]{2,}$" />
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="step">
+                <div class="form-control">
+                    <label for="first_lang" class="font_size_para font_weight">First language</label>
+                    <input type="text" name="first_lang" placeholder="click here to enter text." required
+                        pattern="^[A-Za-z]{2,}$" />
+                </div>
+                <div class="form-control">
+                    <label for="address" class="font_size_para font_weight">Address</label>
+                    <input type="text" name="address" placeholder="click here to enter text." required
+                        pattern="^[A-Za-z0-9]{5,}$" />
+                </div>
+                <div class="form-control">
+                    <label for="email" class="font_size_para font_weight">E-mail address</label>
+                    <input type="email" name="email" placeholder="click here to enter text." required
+                        pattern="^[A-Za-z0-9]{3,}@[A-Za-z]{2,}[.]{1}[A-Za-z.]{3,}$" />
+                </div>
+                <div class="form-control">
+                    <label for="number" class="font_size_para font_weight">Phone number</label>
+                    <input type="tel" id="phone" required />
+                </div>
+                <div class="form-control">
+                    <label for="marital_status" class="font_size_para font_weight">Marital
+                        Status</label>
+                    <input type="text" name="marital_status" placeholder="click here to enter text." required
+                        pattern="^[A-Za-z]{2,}$" />
+                </div>
+                <div class="form-control">
+                    <label for="married_date" class="font_size_para font_weight">If married,date of
+                        marriage/If in common-law, date started living
+                        together:</label>
+                    <input type="text" onfocus="(this.type='date')" name="married_date"
+                        placeholder="click here to enter date." required />
+                </div>
+                <div class="form-control">
+                    <label for="children" class="font_size_para font_weight">Do you have
+                        children?</label>
+                    <select name="children" required>
+                        <option value="" selected>Choose an item.</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-control">
+                    <label for="age" class="font_size_para font_weight">If so, how many and what are
+                        their
+                        ages?</label>
+                    <input type="text" name="age" maxlength="3" placeholder="click here to enter text." required
+                        pattern="^[0-9]{1,}$" />
+                </div>
+            </div>
+            <!-- personal information end here  -->
+            <div class="step">
+                <h3>Education: Please provide your most recent educational information.</h3>
+                <div class="form-control">
+                    <label for="from" class="font_size_para font_weight">From:</label>
+                    <div class="double_input">
+                        <input type="text" name="from" class="wrap_placehold" placeholder="click here to enter text."
+                            required pattern="^[A-Za-z]{2,}$" />
+                        <input type="text" name="from_Two" class="wrap_placehold"
+                            placeholder="click here to enter text." onfocus="this.setAttribute('required', true)"
+                            pattern="^[A-Za-z]{2,}$" />
+                    </div>
+
+
+                </div>
+                <div class="form-control">
+                    <label for="to" class="font_size_para font_weight">To:</label>
+                    <div class="double_input">
+                        <input type="text" name="to" class="wrap_placehold" placeholder="click here to enter text."
+                            required pattern="^[A-Za-z]{2,}$" />
+                        <input type="text" name="to_two" class="wrap_placehold" placeholder="click here to enter text."
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$" />
+                    </div>
+
+                </div>
+                <div class="form-control">
+                    <label for="nameOf_school" class="font_size_para font_weight">Name of School</label>
+                    <div class="double_input">
+                        <input type="text" name="nameOf_school" placeholder="click here to enter text." required
+                            pattern="^[A-Za-z]{2,}$" />
+                        <input type="text" name="nameOf_schoolTwo" placeholder="click here to enter text."
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$" />
+                    </div>
+
+                </div>
+                <div class="form-control">
+                    <label for="city_country" class="font_size_para font_weight">City/Country</label>
+                    <div class="double_input">
+                        <input type="text" name="city_country" placeholder="click here to enter text." required
+                            pattern="^[A-Za-z]{2,}$" />
+                        <input type="text" name="city_countryTwo" placeholder="click here to enter text."
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$" />
+                    </div>
+
+                </div>
+                <div class="form-control">
+                    <label for="diploma" class="font_size_para font_weight">Type of certificate or
+                        diploma
+                        issued</label>
+                    <div class="double_input">
+                        <input type="text" name="diploma" placeholder="click here to enter text." required
+                            pattern="^[A-Za-z]{2,}$" />
+                        <input type="text" name="diploma_two" placeholder="click here to enter text."
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$" />
+                    </div>
+
+                </div>
+                <div class="form-control">
+                    <label for="general" class="font_size_para font_weight">Area of study - if not
+                        specific, write "General"
+                    </label>
+                    <div class="double_input">
+                        <input type="text" name="general" placeholder="click here to enter text." required
+                            pattern="^[A-Za-z]{2,}$" />
+                        <input type="text" name="general_two" placeholder="click here to enter text."
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$" />
+                    </div>
+
+                </div>
+            </div>
+            <!-- education information end here -->
+            <div class="step">
+                <h3>TRIUMPH IMMIGRATION CANADA INC.</h3>
+                <span>Work Experience -</span>
+                <span>Please provide your most recent work experience <u>in Canada.</u></span>
+                <div class="form-control">
+                    <label class="font_size_para font_weight" for="from">From:</label>
+                    <div class="double_input">
+                        <input type="text" name="from_three" class="wrap_placehold"
+                            placeholder="Click here to enter text" required pattern="^[A-Za-z]{2,}$">
+                        <input type="text" name="from_three_two" class="wrap_placehold"
+                            placeholder="Click here to enter text" onfocus="this.setAttribute('required', true)"
+                            pattern="^[A-Za-z]{2,}$">
+                    </div>
+
+                </div>
+                <div class="form-control">
+                    <label class="font_size_para font_weight" for="to">To:</label>
+                    <div class="double_input">
+                        <input type="text" name="to_three" class="wrap_placehold" placeholder="Click here to enter text"
+                            required pattern="^[A-Za-z]{2,}$">
+                        <input type="text" name="to_three_two" class="wrap_placehold"
+                            placeholder="Click here to enter text" onfocus="this.setAttribute('required', true)"
+                            pattern="^[A-Za-z]{2,}$">
+                    </div>
+
+                </div>
+                <div class="form-control">
+                    <label class="font_size_para font_weight" for="job_title">Job Title</label>
+                    <div class="double_input">
+                        <input type="text" name="job_title" placeholder="Click here to enter text" required
+                            pattern="^[A-Za-z]{2,}$">
+                        <input type="text" name="job_title_two" placeholder="Click here to enter text"
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
+                    </div>
+
+                </div>
+                <div class="form-control">
+                    <label class="font_size_para font_weight" for="city_country">City/Country</label>
+                    <div class="double_input">
+                        <input type="text" name="city_country_three" placeholder="Click here to enter text" required
+                            pattern="^[A-Za-z]{2,}$">
+                        <input type="text" name="city_country_three_two" placeholder="Click here to enter text"
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
+                    </div>
+
+                </div>
+                <div class="form-control">
+                    <label class="font_size_para font_weight" for="employer">
+                        Name of company, Employer
+                    </label>
+                    <div class="double_input">
+                        <input type="text" name="company_employer" placeholder="Click here to enter text" required
+                            pattern="^[A-Za-z]{2,}$">
+                        <input type="text" name="company_employer_two" placeholder="Click here to enter text"
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
+                    </div>
+
+                </div>
+                <div class="form-control">
+                    <label class="font_size_para font_weight" for="street_address">
+                        Street address of Canadian employers only
+                    </label>
+                    <div class="double_input">
+                        <input type="text" name="street_address_of_canadian_employers"
+                            placeholder="Click here to enter text" required pattern="^[A-Za-z0-9]{2,}$">
+                        <input type="text" name="street_address_of_canadian_employers_two"
+                            placeholder="Click here to enter text" onfocus="this.setAttribute('required', true)"
+                            pattern="^[A-Za-z0-9]{2,}$">
+                    </div>
+
+                </div>
+                <div class="form-control">
+                    <label class="font_size_para font_weight" for="street_address">
+                        Street address of Canadian employers only
+                    </label>
+                    <div class="double_input">
+                        <input type="text" name="street_address_of_canadian_employers"
+                            placeholder="Click here to enter text" required pattern="^[A-Za-z0-9]{2,}$">
+                        <input type="text" name="street_address_of_canadian_employers_two"
+                            placeholder="Click here to enter text" onfocus="this.setAttribute('required', true)"
+                            pattern="^[A-Za-z0-9]{2,}$">
+                    </div>
+                </div>
+            </div>
+            <!-- work experience end here  -->
+            <div class="step">
+                <div class="additional_questions">
+                    <div class="questions_heading">
+                        <h3>Additional questions</h3>
+                    </div>
+                    <div class="question question_one">
+                        <span>1.</span>
+                        <span>Are you outside your country of origin? If yes, when did you last leave your country
+                            of
+                            origin?</span>
+                        <span class="click_here">Click here to enter text.</span>
+                        <input type="text" name="leaveYour_country" placeholder="Click here to enter text"
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z0-9]{2,}$">
+                    </div>
+                    <div class="question question_two">
+                        <span>2.</span>
+                        <span>If you are outside of your country of origin, what is your current immigration status?
+                            If
+                            you have
+                            a status, when is it expiring?</span>
+                        <span class="click_here">Click here to enter text.</span>
+                        <input type="text" name="current_immigration" placeholder="Click here to enter text"
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z0-9]{4,}$">
+                    </div>
+                    <div class="question question_three">
+                        <span>3.</span>
+                        <span>Do you have family or relatives in any provinces of Canada? If yes, please indicate
+                            the name of the province and your relationship with the person(s)</span>
+                        <span class="click_here">Click here to enter text.</span>
+                        <input type="text" name="status_expiring" placeholder="Click here to enter text"
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
+                    </div>
+                    <div class="question question_four">
+                        <span>4.</span>
+                        <span>Have you ever committed, been arrested for, been charged with, or convicted of any
+                            criminal
+                            offence in Canada or any country?</span>
+                        <span class="click_here">choose an item.</span>
+                        <select name="criminal_offence">
+                            <option value="" selected>Choose an item</option>
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                    <div class="question question_five">
+                        <span>5.</span>
+                        <span>Have you ever been refused a visa, permit, or denied entry to Canada or any other
+                            country?</span>
+                        <span class="click_here">choose an item.</span>
+                        <select name="refuse_visa_permit">
+                            <option value="" selected>Choose an item</option>
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                    <div class="question question_six">
+                        <span>6.</span>
+                        <span>Is there any other information that you feel is important to share as part of your
+                            preliminary
+                            assessment? </span>
+                        <span class="click_here">Click here to enter text.</span>
+                        <input type="text" name="preliminary_assessment" placeholder="Click here to enter text"
+                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
+                    </div>
+                </div>
+            </div>
+            <!-- additional question end here  -->
+            <div class="step">
+                <div class="footer_heading">
+                    <h3>ENGLISH LANGUAGE</h3>
+                    <P>What is your English level? E.g. None, basic, intermediate, advance
+                    </P>
+                    <span class="click_here">Click or tap here to enter text.</span>
+                    <input type="text" name="english_level" placeholder="Click here to enter text"
+                        onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{4,}$">
+                </div>
+                <!-- footer paragraf start here -->
+                <div class="footer_paragraf">
+                    <p>If you have taken an IELTS or CELPIP language test, please complete the following:</p>
+                    <span class="click_here">Click here to enter text.</span>
+                    <input type="text" name="Ielts_celpip_test" placeholder="Click here to enter text"
+                        onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
+                </div>
+            </div>
+            <!-- footer heading end here -->
+            <div class="step">
+                <div class="heading_third">
+                    <h3>TRIUMPH IMMIGRATION CANADA INC.</h3>
+                </div>
+                <div class="form-control">
+                    <div class="third_form_question">
+                        <div class="first_three_question">
+                            <div class="first_question">
+                                <span>Test name: IELTS/CELPIP -</span>
+                                <span class="click_here"> Choose an item.</span>
+                                <!-- <br> -->
+                                <select name="ielts">
+                                    <option value="" selected>Choose an item</option>
+                                    <option value="ielts">IELTS</option>
+                                    <option value="celpip">CELPIP</option>
+                                </select>
+                            </div>
+                            <div class="second_question">
+                                <span>Reading:</span>
+                                <span class="click_here">Click or tap here to enter text.</span>
+                                <input type="text" name="reading" placeholder="Click here to enter text"
+                                    pattern="^[A-Za-z]{2,}$">
+                            </div>
+                            <div class="third_question">
+                                <span>Speaking:</span>
+                                <span class="click_here">Click or tap here to enter text.</span>
+                                <input type="text" name="speaking" placeholder="Click here to enter text"
+                                    pattern="^[A-Za-z]{2,}$">
+                            </div>
+                        </div>
+                        <div class="second_three_question">
+                            <div class="forth_question">
+                                <span>Date of test:</span>
+                                <span class="click_here">Click or tap here to enter text.</span>
+                                <input type="text" onfocus="(this.type=`date`)" name="dateof_test"
+                                    placeholder="Click here to enter text">
+                            </div>
+                            <div class="fivth_question">
+                                <span>Writing:</span>
+                                <span class="click_here">Click or tap here to enter text.</span>
+                                <input type="text" name="writing" placeholder="Click here to enter text"
+                                    pattern="^[A-Za-z]{2,}$">
+                            </div>
+                            <div class="sixth_question">
+                                <span>Listening:</span>
+                                <span class="click_here">Click or tap here to enter text.</span>
+                                <input type="text" name="listening" placeholder="Click here to enter text"
+                                    pattern="^[A-Za-z]{2,}$">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- third footer start here -->
+                    <div class="third_form_footer_section">
+                        <div class="footer_heading">
+                            <h5>FINANCIAL INFORMATION </h5>
+
+                            <p>What is the approximate amount of your available financial resources? E.g. Less than
+                                $10,000
+                                USD, Over $10,000 USD, Over $50,000 USD, Over $100,000 USD.</p>
+
+                            <span class="click_here">Click here to enter text.</span>
+                            <input type="text" name="financial_info" placeholder="Click here to enter text"
+                                pattern="^[A-Za-z0-9]{5,}$">
+                        </div>
+                        <br>
+                        <div class="footer_paragraf">
+                            <p>Thank you for filling out this questionnaire. The information provided will enable us to
+                                determine your eligibility for Canadian immigration programs.</p>
+                        </div>
+                    </div>
+                    <!-- third footer end here -->
+                </div>
+            </div>
+            <!-- triumph immigration canada end here  -->
+        </div>
+        <!-- controls -->
+        <div class="controls">
+            <button type="button" class="prev-btn">Prev</button>
+            <button type="button" class="next-btn">Next</button>
+            <button type="submit" class="submit-btn">Submit</button>
+        </div>
+    </form>
+    <script>
+        const input = document.querySelector("#phone");
+
+        // Initialize intlTelInput with the default country as US
+        window.intlTelInput(input, {
+            initialCountry: "US",
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js" // for formatting/validation
+        });
+
+        // Restrict input to digits only and limit to 10 digits
+        input.addEventListener("input", function (e) {
+            // Replace any non-digit characters
+            this.value = this.value.replace(/\D/g, '');
+
+            // Limit the value to the first 10 digits
+            if (this.value.length > 10) {
+                this.value = this.value.substring(0, 10);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
