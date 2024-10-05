@@ -9,6 +9,8 @@
     <script src="multiStepForm.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
     <style>
         .form-control {
@@ -28,6 +30,9 @@
             border-radius: 4px;
             width: 100%;
             font-size: 16px;
+            display: flex;
+            align-items: center;
+            column-gap: 1rem;
         }
 
         input[type="radio"]:checked+label {
@@ -70,24 +75,7 @@
     <form class="form-wizard">
         <div class="form_intro">
             <div class="heading_one">
-                <p>TRIUMPH IMMIGRATION CANADA INC.</p>
-            </div>
-            <div class="body_content">
-                <div class="body_heading ">
-                    <h3>PRELIMINARY ASSESSMENT FORM</h3>
-                </div>
-                <div class="body_para">
-                    <p class="font_size_para">
-                        The information gathered in this document will be used to assess your Canadian
-                        immigration
-                        options and is protected by the College of Immigration and Citizenship Consultants
-                        (CICC)
-                        Code of Professional Conduct and Canadian privacy laws. Your information will be held in
-                        the
-                        strictest of confidence and will not be shared with anyone without your explicit written
-                        consent.
-                    </p>
-                </div>
+                <p>App Cost Calculator</p>
             </div>
         </div>
 
@@ -104,432 +92,458 @@
         <div class="progress-container">
             <div class="progress"></div>
             <ol>
-                <!-- <li class="current">Personal Info</li>
-                <li>Contact Info</li>
-                <li>Account Info</li>
-                <li>About</li>
-                <li>Personal Info</li>
-                <li>Contact Info</li>
-                <li>Account Info</li>
-                <li>About</li>
-                <li>About</li> -->
+                <li class="current"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ol>
         </div>
         <!-- progress-container -->
 
         <div class="steps-container">
+
             <div class="step">
-                <h3>Personal Information</h3>
-                <div class="personal_info">
+                <h3>Have an amazing mobile app idea?</h3>
+                <p>Answer the below questions to find out your app’s development cost</p>
+                <p>What is your app about?</p>
+                <p>(select atleast one option)</p>
+                <div class="step_one">
                     <div class="form-control">
-                        <label for="last_name" class="font_size_para font_weight">Last name</label>
-                        <input type="text" name="last_name" placeholder="click here to enter text." required
-                            pattern="^[A-Za-z]{2,}$" />
+                        <div class="double_input">
+                            <input type="radio" id="social_networking" name="amazing_mobile_app_idea"
+                                value="Social Networking / Social Sharing">
+                            <label for="social_networking">
+                                <img src="./assest/img/social.svg" alt="social">
+                                Social Networking / Social Sharing
+                            </label>
+
+                            <input type="radio" id="health_fitness" name="amazing_mobile_app_idea"
+                                value="Lifestyle / Health and Fitness">
+                            <label for="health_fitness">
+                                <img src="./assest/img/health.svg" alt="health">
+                                Lifestyle / Health and Fitness
+                            </label>
+                        </div>
                     </div>
                     <div class="form-control">
-                        <label for="first_name" class="font_size_para font_weight">First name</label>
-                        <input type="text" name="first_name" placeholder="click here to enter text." required
-                            pattern="^[A-Za-z]{2,}$" />
-                    </div>
-                    <div class="form-control" style="display: flex; flex-direction: column;">
-                        <label for="middle_name" class="font_size_para font_weight">Middle name</label>
-                        <input type="text" name="middle_name" placeholder="click here to enter text." required
-                            pattern="^[A-Za-z]{2,}$" />
-                    </div>
-                    <div class="form-control">
-                        <label for="gender" class="font_size_para font_weight">Gender</label>
-                        <input type="text" name="gender" placeholder="click here to enter text." required
-                            pattern="^[A-Za-z]{4,}$" />
-                    </div>
-                    <div class="form-control">
-                        <label for="dateOf_birth" class="font_size_para font_weight">Date of birth</label>
-                        <input type="text" onfocus="(this.type='date')" name="dateOf_birth"
-                            placeholder="click here to enter text." required />
+                        <div class="double_input">
+                            <input type="radio" id="E-commerce" name="amazing_mobile_app_idea"
+                                value="E- Commerce / Shopping Apps">
+                            <label for="E-commerce">
+                                <img src="./assest/img/ecommerce.svg" alt="ecommerce">
+                                Maintenance of existing website
+                            </label>
+
+                            <input type="radio" id="e-learning" name="amazing_mobile_app_idea"
+                                value="Education and E-Learning">
+                            <label for="e-learning">
+                                <img src="./assest/img/education.svg" alt="education">
+                                Education and E-Learning
+                            </label>
+                        </div>
                     </div>
                     <div class="form-control">
-                        <label for="countryOf_birth" class="font_size_para font_weight">Country of
-                            birth</label>
-                        <input type="text" name="countryOf_brith" placeholder="click here to enter text." required
-                            pattern="^[A-Za-z]{2,}$" />
-                    </div>
-                    <div class="form-control">
-                        <label for="residence" class="font_size_para font_weight">Country of
-                            residence</label>
-                        <input type="text" name="residence" placeholder="click here to enter text." required
-                            pattern="^[A-Za-z]{2,}$" />
-                    </div>
-                    <div class="form-control">
-                        <label for="passport" class="font_size_para font_weight">Country that is issued your
-                            passport</label>
-                        <input type="text" name="passport" placeholder="click here to enter text." required
-                            pattern="^[A-Za-z]{2,}$" />
+                        <div class="double_input">
+                            <input type="radio" id="service_apps" name="amazing_mobile_app_idea"
+                                value="Service Apps (eg. Urben Clap)">
+                            <label for="service_apps">
+                                <img src="./assest/img/service.svg" alt="service">
+                                Service Apps (eg. Urben Clap)
+                            </label>
+
+                            <input type="radio" id="booking_apps" name="amazing_mobile_app_idea"
+                                value=" Booking Apps ( Hotel, Flight etc.)">
+                            <label for="booking_apps">
+                                <img src="./assest/img/booking.svg" alt="booking">
+                                Booking Apps ( Hotel, Flight etc.)
+                            </label>
+                        </div>
                     </div>
 
+                    <div class="form-control">
+                        <div class="double_input">
+                            <input type="radio" id="ngo_fundraising" name="amazing_mobile_app_idea" value="NGO & Fundraising">
+                            <label for="ngo_fundraising">
+                                <img src="./assest/img/ngo.svg" alt="ngo">
+                                NGO & Fundraising
+                            </label>
+
+                            <input type="radio" id="transport" name="amazing_mobile_app_idea"
+                                value="Transport & Logistics Management">
+                            <label for="transport">
+                                <img src="./assest/img/transport.svg" alt="transport">
+                                Transport & Logistics Management
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <div class="double_input">
+                            <input type="radio" id="real-estate" name="amazing_mobile_app_idea" value="Real-Estate">
+                            <label for="real-estate">
+                                <img src="./assest/img/realestate.svg" alt="realestate">
+                                Real-Estate
+                            </label>
+
+                            <input type="radio" id="food_delivery" name="amazing_mobile_app_idea" value="Food Delivery">
+                            <label for="food_delivery">
+                                <img src="./assest/img/food.svg" alt="food">
+                                Food Delivery
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <div class="double_input">
+                            <input type="radio" id="productivity" name="amazing_mobile_app_idea" value="Productivity">
+                            <label for="productivity">
+                                <img src="./assest/img/productivity.svg" alt="productivity">
+                                Productivity
+                            </label>
+
+                            <input type="text" id="suggestion" name="amazing_mobile_app_idea" placeholder="Type your suggestions...">
+                        </div>
+                    </div>
                 </div>
-
             </div>
             <div class="step">
+                <h3>Which Platform do you prefer to use?</h3>
+                <p>(select atleast one option)</p>
                 <div class="form-control">
-                    <label for="first_lang" class="font_size_para font_weight">First language</label>
-                    <input type="text" name="first_lang" placeholder="click here to enter text." required
-                        pattern="^[A-Za-z]{2,}$" />
+                    <div class="triple_input">
+                        <input type="radio" id="android" name="which_platform_do_you_prefer_to_use" value="Android">
+                        <label for="android">
+                            <img src="./assest/img/android.svg" alt="Android">
+                            Android
+                        </label>
+                        <input type="radio" id="ios" name="which_platform_do_you_prefer_to_use" value="iOS">
+                        <label for="ios">
+                            <img src="./assest/img/ios.svg" alt="ios">
+                            iOS
+                        </label>
+                        <input type="radio" id="both" name="which_platform_do_you_prefer_to_use" value="Both">
+                        <label for="both">
+                            Both
+                        </label>
+                    </div>
                 </div>
-                <div class="form-control">
-                    <label for="address" class="font_size_para font_weight">Address</label>
-                    <input type="text" name="address" placeholder="click here to enter text." required
-                        pattern="^[A-Za-z0-9]{5,}$" />
-                </div>
-                <div class="form-control">
-                    <label for="email" class="font_size_para font_weight">E-mail address</label>
-                    <input type="email" name="email" placeholder="click here to enter text." required
-                        pattern="^[A-Za-z0-9]{3,}@[A-Za-z]{2,}[.]{1}[A-Za-z.]{3,}$" />
-                </div>
-                <div class="form-control">
-                    <label for="number" class="font_size_para font_weight">Phone number</label>
-                    <input type="tel" id="phone" required />
-                </div>
-                <div class="form-control">
-                    <label for="marital_status" class="font_size_para font_weight">Marital
-                        Status</label>
-                    <input type="text" name="marital_status" placeholder="click here to enter text." required
-                        pattern="^[A-Za-z]{2,}$" />
-                </div>
-                <div class="form-control">
-                    <label for="married_date" class="font_size_para font_weight">If married,date of
-                        marriage/If in common-law, date started living
-                        together:</label>
-                    <input type="text" onfocus="(this.type='date')" name="married_date"
-                        placeholder="click here to enter date." required />
-                </div>
-                <div class="form-control">
-                    <label for="children" class="font_size_para font_weight">Do you have
-                        children?</label>
-                    <select name="children" required>
-                        <option value="" selected>Choose an item.</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </div>
-                <div class="form-control">
-                    <label for="age" class="font_size_para font_weight">If so, how many and what are
-                        their
-                        ages?</label>
-                    <input type="text" name="age" maxlength="3" placeholder="click here to enter text." required
-                        pattern="^[0-9]{1,}$" />
-                </div>
+
             </div>
             <!-- personal information end here  -->
             <div class="step">
-                <h3>Education: Please provide your most recent educational information.</h3>
+                <h3>Which devices would you like your App to support?</h3>
+                <p>(select atleast one option)</p>
                 <div class="form-control">
-                    <label for="from" class="font_size_para font_weight">From:</label>
-                    <div class="double_input">
-                        <input type="text" name="from" class="wrap_placehold" placeholder="click here to enter text."
-                            required pattern="^[A-Za-z]{2,}$" />
-                        <input type="text" name="from_Two" class="wrap_placehold"
-                            placeholder="click here to enter text." onfocus="this.setAttribute('required', true)"
-                            pattern="^[A-Za-z]{2,}$" />
+                    <div class="fourth_input">
+                        <input type="radio" id="smartphone" name="device_support" value="Smartphone">
+                        <label for="smartphone">
+                            <img src="./assest/img/smartphone 1.svg" alt="smartphone">
+                            Smartphone
+                        </label>
+                        <input type="radio" id="tablet" name="device_support" value="tablet">
+                        <label for="tablet">
+                            <img src="./assest/img/tablet.svg" alt="tablet">
+                            Tablet
+                        </label>
+                        <input type="radio" id="wearables" name="device_support" value="Wearables">
+                        <label for="wearables">
+                            <img src="./assest/img/wearables.svg" alt="wearables">
+                            Wearables
+                        </label>
+                        <input type="radio" id="all" name="device_support" value="all">
+                        <label for="all">
+                            All
+                        </label>
                     </div>
-
-
-                </div>
-                <div class="form-control">
-                    <label for="to" class="font_size_para font_weight">To:</label>
-                    <div class="double_input">
-                        <input type="text" name="to" class="wrap_placehold" placeholder="click here to enter text."
-                            required pattern="^[A-Za-z]{2,}$" />
-                        <input type="text" name="to_two" class="wrap_placehold" placeholder="click here to enter text."
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$" />
-                    </div>
-
-                </div>
-                <div class="form-control">
-                    <label for="nameOf_school" class="font_size_para font_weight">Name of School</label>
-                    <div class="double_input">
-                        <input type="text" name="nameOf_school" placeholder="click here to enter text." required
-                            pattern="^[A-Za-z]{2,}$" />
-                        <input type="text" name="nameOf_schoolTwo" placeholder="click here to enter text."
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$" />
-                    </div>
-
-                </div>
-                <div class="form-control">
-                    <label for="city_country" class="font_size_para font_weight">City/Country</label>
-                    <div class="double_input">
-                        <input type="text" name="city_country" placeholder="click here to enter text." required
-                            pattern="^[A-Za-z]{2,}$" />
-                        <input type="text" name="city_countryTwo" placeholder="click here to enter text."
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$" />
-                    </div>
-
-                </div>
-                <div class="form-control">
-                    <label for="diploma" class="font_size_para font_weight">Type of certificate or
-                        diploma
-                        issued</label>
-                    <div class="double_input">
-                        <input type="text" name="diploma" placeholder="click here to enter text." required
-                            pattern="^[A-Za-z]{2,}$" />
-                        <input type="text" name="diploma_two" placeholder="click here to enter text."
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$" />
-                    </div>
-
-                </div>
-                <div class="form-control">
-                    <label for="general" class="font_size_para font_weight">Area of study - if not
-                        specific, write "General"
-                    </label>
-                    <div class="double_input">
-                        <input type="text" name="general" placeholder="click here to enter text." required
-                            pattern="^[A-Za-z]{2,}$" />
-                        <input type="text" name="general_two" placeholder="click here to enter text."
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$" />
-                    </div>
-
                 </div>
             </div>
             <!-- education information end here -->
             <div class="step">
-                <h3>TRIUMPH IMMIGRATION CANADA INC.</h3>
-                <span>Work Experience -</span>
-                <span>Please provide your most recent work experience <u>in Canada.</u></span>
+                <h3>Which Approach do you favour for building the App?</h3>
+                <p>(select atleast one option)</p>
                 <div class="form-control">
-                    <label class="font_size_para font_weight" for="from">From:</label>
                     <div class="double_input">
-                        <input type="text" name="from_three" class="wrap_placehold"
-                            placeholder="Click here to enter text" required pattern="^[A-Za-z]{2,}$">
-                        <input type="text" name="from_three_two" class="wrap_placehold"
-                            placeholder="Click here to enter text" onfocus="this.setAttribute('required', true)"
-                            pattern="^[A-Za-z]{2,}$">
-                    </div>
+                        <input type="radio" id="native" name="building_the_app" value="native">
+                        <label for="native">
+                            Native
+                        </label>
 
+                        <input type="radio" id="flutter" name="building_the_app" value="flutter">
+                        <label for="flutter">
+                            Flutter
+                        </label>
+                    </div>
                 </div>
                 <div class="form-control">
-                    <label class="font_size_para font_weight" for="to">To:</label>
                     <div class="double_input">
-                        <input type="text" name="to_three" class="wrap_placehold" placeholder="Click here to enter text"
-                            required pattern="^[A-Za-z]{2,}$">
-                        <input type="text" name="to_three_two" class="wrap_placehold"
-                            placeholder="Click here to enter text" onfocus="this.setAttribute('required', true)"
-                            pattern="^[A-Za-z]{2,}$">
-                    </div>
+                        <input type="radio" id="react_native" name="building_the_app" value="React Native">
+                        <label for="react_native">
+                            React Native
+                        </label>
 
-                </div>
-                <div class="form-control">
-                    <label class="font_size_para font_weight" for="job_title">Job Title</label>
-                    <div class="double_input">
-                        <input type="text" name="job_title" placeholder="Click here to enter text" required
-                            pattern="^[A-Za-z]{2,}$">
-                        <input type="text" name="job_title_two" placeholder="Click here to enter text"
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
-                    </div>
-
-                </div>
-                <div class="form-control">
-                    <label class="font_size_para font_weight" for="city_country">City/Country</label>
-                    <div class="double_input">
-                        <input type="text" name="city_country_three" placeholder="Click here to enter text" required
-                            pattern="^[A-Za-z]{2,}$">
-                        <input type="text" name="city_country_three_two" placeholder="Click here to enter text"
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
-                    </div>
-
-                </div>
-                <div class="form-control">
-                    <label class="font_size_para font_weight" for="employer">
-                        Name of company, Employer
-                    </label>
-                    <div class="double_input">
-                        <input type="text" name="company_employer" placeholder="Click here to enter text" required
-                            pattern="^[A-Za-z]{2,}$">
-                        <input type="text" name="company_employer_two" placeholder="Click here to enter text"
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
-                    </div>
-
-                </div>
-                <div class="form-control">
-                    <label class="font_size_para font_weight" for="street_address">
-                        Street address of Canadian employers only
-                    </label>
-                    <div class="double_input">
-                        <input type="text" name="street_address_of_canadian_employers"
-                            placeholder="Click here to enter text" required pattern="^[A-Za-z0-9]{2,}$">
-                        <input type="text" name="street_address_of_canadian_employers_two"
-                            placeholder="Click here to enter text" onfocus="this.setAttribute('required', true)"
-                            pattern="^[A-Za-z0-9]{2,}$">
-                    </div>
-
-                </div>
-                <div class="form-control">
-                    <label class="font_size_para font_weight" for="street_address">
-                        Street address of Canadian employers only
-                    </label>
-                    <div class="double_input">
-                        <input type="text" name="street_address_of_canadian_employers"
-                            placeholder="Click here to enter text" required pattern="^[A-Za-z0-9]{2,}$">
-                        <input type="text" name="street_address_of_canadian_employers_two"
-                            placeholder="Click here to enter text" onfocus="this.setAttribute('required', true)"
-                            pattern="^[A-Za-z0-9]{2,}$">
+                        <input type="radio" id="open_for_any" name="building_the_app" value="Open for any">
+                        <label for="open_for_any">
+                            Open for any
+                        </label>
                     </div>
                 </div>
             </div>
             <!-- work experience end here  -->
             <div class="step">
-                <div class="additional_questions">
-                    <div class="questions_heading">
-                        <h3>Additional questions</h3>
+                <h3>How Many Screens do you envision for your App?</h3>
+                <p>(select atleast one option)</p>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="five_screens" name="how_many_screens" value="5 Screens">
+                        <label for="five_screens">
+                            5 Screens
+                        </label>
+
+                        <input type="radio" id="ten_screens" name="how_many_screens" value="5-10 Screens">
+                        <label for="ten_screens">
+                            5-10 Screens
+                        </label>
                     </div>
-                    <div class="question question_one">
-                        <span>1.</span>
-                        <span>Are you outside your country of origin? If yes, when did you last leave your country
-                            of
-                            origin?</span>
-                        <span class="click_here">Click here to enter text.</span>
-                        <input type="text" name="leaveYour_country" placeholder="Click here to enter text"
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z0-9]{2,}$">
+                </div>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="fiften_screens" name="how_many_screens" value="10-15 Screens">
+                        <label for="fiften_screens">
+                            10-15 Screens
+                        </label>
+
+                        <input type="radio" id="twenty_screens" name="how_many_screens" value="15-20 Screens">
+                        <label for="twenty_screens">
+                            15-20 Screens
+                        </label>
                     </div>
-                    <div class="question question_two">
-                        <span>2.</span>
-                        <span>If you are outside of your country of origin, what is your current immigration status?
-                            If
-                            you have
-                            a status, when is it expiring?</span>
-                        <span class="click_here">Click here to enter text.</span>
-                        <input type="text" name="current_immigration" placeholder="Click here to enter text"
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z0-9]{4,}$">
-                    </div>
-                    <div class="question question_three">
-                        <span>3.</span>
-                        <span>Do you have family or relatives in any provinces of Canada? If yes, please indicate
-                            the name of the province and your relationship with the person(s)</span>
-                        <span class="click_here">Click here to enter text.</span>
-                        <input type="text" name="status_expiring" placeholder="Click here to enter text"
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
-                    </div>
-                    <div class="question question_four">
-                        <span>4.</span>
-                        <span>Have you ever committed, been arrested for, been charged with, or convicted of any
-                            criminal
-                            offence in Canada or any country?</span>
-                        <span class="click_here">choose an item.</span>
-                        <select name="criminal_offence">
-                            <option value="" selected>Choose an item</option>
-                            <option value="no">No</option>
-                            <option value="yes">Yes</option>
-                        </select>
-                    </div>
-                    <div class="question question_five">
-                        <span>5.</span>
-                        <span>Have you ever been refused a visa, permit, or denied entry to Canada or any other
-                            country?</span>
-                        <span class="click_here">choose an item.</span>
-                        <select name="refuse_visa_permit">
-                            <option value="" selected>Choose an item</option>
-                            <option value="no">No</option>
-                            <option value="yes">Yes</option>
-                        </select>
-                    </div>
-                    <div class="question question_six">
-                        <span>6.</span>
-                        <span>Is there any other information that you feel is important to share as part of your
-                            preliminary
-                            assessment? </span>
-                        <span class="click_here">Click here to enter text.</span>
-                        <input type="text" name="preliminary_assessment" placeholder="Click here to enter text"
-                            onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
+                </div>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="twentyfive_screens" name="how_many_screens" value="20-25 Screens">
+                        <label for="twentyfive_screens">
+                            20-25 Screens
+                        </label>
+
+                        <input type="radio" id="above_twentyfive" name="how_many_screens" value="Above 25 screens">
+                        <label for="above_twentyfive">
+                            Above 25 screens
+                        </label>
                     </div>
                 </div>
             </div>
             <!-- additional question end here  -->
             <div class="step">
-                <div class="footer_heading">
-                    <h3>ENGLISH LANGUAGE</h3>
-                    <P>What is your English level? E.g. None, basic, intermediate, advance
-                    </P>
-                    <span class="click_here">Click or tap here to enter text.</span>
-                    <input type="text" name="english_level" placeholder="Click here to enter text"
-                        onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{4,}$">
+                <h3>How would you like your Users to Sign-up/Log-in to your App?</h3>
+                <p>(select atleast one option)</p>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="email" name="user_sign_up_or_logIn" value="email">
+                        <label for="email">
+                            <img src="./assest/img/email 1.svg" alt="email">
+                            Email Sign-Up
+                        </label>
+
+                        <input type="radio" id="phoneotp" name="user_sign_up_or_logIn" value="phoneotp">
+                        <label for="phoneotp">
+                            <img src="./assest/img/phoneotp.svg" alt="phoneotp">
+                            Phone OTP
+                        </label>
+                    </div>
                 </div>
-                <!-- footer paragraf start here -->
-                <div class="footer_paragraf">
-                    <p>If you have taken an IELTS or CELPIP language test, please complete the following:</p>
-                    <span class="click_here">Click here to enter text.</span>
-                    <input type="text" name="Ielts_celpip_test" placeholder="Click here to enter text"
-                        onfocus="this.setAttribute('required', true)" pattern="^[A-Za-z]{2,}$">
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="face_book" name="user_sign_up_or_logIn" value="React Native">
+                        <label for="face_book">
+                            <img src="./assest/img/socialsignup.svg" alt="socialsignup">
+                            Social Media Sign-Up
+                        </label>
+
+                        <input type="radio" id="facedetection" name="user_sign_up_or_logIn" value="Face Detection">
+                        <label for="facedetection">
+                            <img src="./assest/img/facedetection.svg" alt="facedetection">
+                            Face Detection
+                        </label>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="guest_user" name="user_sign_up_or_logIn" value=" Guest User">
+                        <label for="guest_user">
+                            <img src="./assest/img/userarenotrequiredtosignup.svg" alt="userarenotrequiredtosignup">
+                            Guest User
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <h3>Which features/functionalities would you like to incorporate in your App?</h3>
+                <p>(select atleast one option)</p>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="map" name="features_or_functionalities" value="Maps and Geo-Location">
+                        <label for="map">
+                            <img src="./assest/img/map.svg" alt="map">
+                            Maps and Geo-Location
+                        </label>
+
+                        <input type="radio" id="inapppayment" name="features_or_functionalities" value="In-App Payment">
+                        <label for="inapppayment">
+                            <img src="./assest/img/inapppayment.svg" alt="inapppayment">
+                            In-App Payment
+                        </label>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="paymentgateway" name="features_or_functionalities"
+                            value="Payment Gateway Integration">
+                        <label for="paymentgateway">
+                            <img src="./assest/img/paymentgateway.svg" alt="paymentgateway">
+                            Payment Gateway Integration
+                        </label>
+
+                        <input type="radio" id="social_media" name="features_or_functionalities" value="Social Media">
+                        <label for="social_media">
+                            <img src="./assest/img/social.svg" alt="social">
+                            Social Media
+                        </label>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="iot" name="features_or_functionalities" value="IoT">
+                        <label for="iot">
+                            <img src="./assest/img/iot.svg" alt="iot">
+                            IoT
+                        </label>
+
+                        <input type="radio" id="push_notification" name="features_or_functionalities" value="Push Notification">
+                        <label for="push_notification">
+                            <img src="./assest/img/push.svg" alt="push">
+                            Push Notification
+                        </label>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="multimedia" name="features_or_functionalities" value="Multimedia playing & Uploading">
+                        <label for="multimedia">
+                            <img src="./assest/img/multimedia.svg" alt="multimedia">
+                            Multimedia playing & Uploading
+                        </label>
+
+                        <input type="radio" id="offlinedata" name="features_or_functionalities" value="Offline data and sync">
+                        <label for="offlinedata">
+                            <img src="./assest/img/offlinedata.svg" alt="offlinedata">
+                            Offline data and sync
+                        </label>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="chat" name="features_or_functionalities" value="Chat / peer to peer communication">
+                        <label for="chat">
+                            <img src="./assest/img/chat.svg" alt="chat">
+                            Chat / peer to peer communication
+                        </label>
+
+                        <input type="radio" id="app_cost" name="features_or_functionalities" value="app-cost  3rd party api integration">
+                        <label for="app_cost">
+                            <img src="./assest/img/chat.svg" alt="app_cost">
+                            app-cost 3rd party api integration
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>How many languages would your App support?</h3>
+                <p>(select atleast one option)</p>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="single" name="languages_support" value="Single">
+                        <label for="single">
+                            Single
+                        </label>
+
+                        <input type="radio" id="multiple" name="languages_support" value="Multiple">
+                        <label for="multiple">
+                            Multiple
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Would your App require/entail an Admin Panel?</h3>
+                <p>(select atleast one option)</p>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="yes"
+                            name="would_your_app_require_admin_panel" value="Yes">
+                        <label for="yes">
+                            Yes
+                        </label>
+
+                        <input type="radio" id="no"
+                            name="would_your_app_require_admin_panel" value="No">
+                        <label for="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Do you require more than one app (eg. Customer + Vendor app) ?</h3>
+                <p>(select atleast one option)</p>
+                <div class="form-control">
+                    <div class="double_input">
+                        <input type="radio" id="do_you_require_more_than_one_app_yes"
+                            name="do_you_require_more_than_one_app" value="Yes">
+                        <label for="do_you_require_more_than_one_app_yes">
+                            Yes
+                        </label>
+
+                        <input type="radio" id="do_you_require_more_than_one_app_no"
+                            name="do_you_require_more_than_one_app" value="No">
+                        <label for="do_you_require_more_than_one_app_no">
+                            No
+                        </label>
+                    </div>
                 </div>
             </div>
             <!-- footer heading end here -->
             <div class="step">
-                <div class="heading_third">
-                    <h3>TRIUMPH IMMIGRATION CANADA INC.</h3>
+                <h3>Personal Information</h3>
+                <div class="form-control">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" id="full_name" name="full_name"
+                        pattern="^(?:[A-Za-z]{2}|[A-Za-z]{1,16})(?:[ ]{0,1}(?:[A-Za-z]{1,16}|(?:Dr.|Mr.|Mrs.|Ms.|Prof.))?){0,3}([ ]{0,1}[A-Za-z]{1,16})?$"
+                        required>
                 </div>
                 <div class="form-control">
-                    <div class="third_form_question">
-                        <div class="first_three_question">
-                            <div class="first_question">
-                                <span>Test name: IELTS/CELPIP -</span>
-                                <span class="click_here"> Choose an item.</span>
-                                <!-- <br> -->
-                                <select name="ielts">
-                                    <option value="" selected>Choose an item</option>
-                                    <option value="ielts">IELTS</option>
-                                    <option value="celpip">CELPIP</option>
-                                </select>
-                            </div>
-                            <div class="second_question">
-                                <span>Reading:</span>
-                                <span class="click_here">Click or tap here to enter text.</span>
-                                <input type="text" name="reading" placeholder="Click here to enter text"
-                                    pattern="^[A-Za-z]{2,}$">
-                            </div>
-                            <div class="third_question">
-                                <span>Speaking:</span>
-                                <span class="click_here">Click or tap here to enter text.</span>
-                                <input type="text" name="speaking" placeholder="Click here to enter text"
-                                    pattern="^[A-Za-z]{2,}$">
-                            </div>
-                        </div>
-                        <div class="second_three_question">
-                            <div class="forth_question">
-                                <span>Date of test:</span>
-                                <span class="click_here">Click or tap here to enter text.</span>
-                                <input type="text" onfocus="(this.type=`date`)" name="dateof_test"
-                                    placeholder="Click here to enter text">
-                            </div>
-                            <div class="fivth_question">
-                                <span>Writing:</span>
-                                <span class="click_here">Click or tap here to enter text.</span>
-                                <input type="text" name="writing" placeholder="Click here to enter text"
-                                    pattern="^[A-Za-z]{2,}$">
-                            </div>
-                            <div class="sixth_question">
-                                <span>Listening:</span>
-                                <span class="click_here">Click or tap here to enter text.</span>
-                                <input type="text" name="listening" placeholder="Click here to enter text"
-                                    pattern="^[A-Za-z]{2,}$">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- third footer start here -->
-                    <div class="third_form_footer_section">
-                        <div class="footer_heading">
-                            <h5>FINANCIAL INFORMATION </h5>
-
-                            <p>What is the approximate amount of your available financial resources? E.g. Less than
-                                $10,000
-                                USD, Over $10,000 USD, Over $50,000 USD, Over $100,000 USD.</p>
-
-                            <span class="click_here">Click here to enter text.</span>
-                            <input type="text" name="financial_info" placeholder="Click here to enter text"
-                                pattern="^[A-Za-z0-9]{5,}$">
-                        </div>
-                        <br>
-                        <div class="footer_paragraf">
-                            <p>Thank you for filling out this questionnaire. The information provided will enable us to
-                                determine your eligibility for Canadian immigration programs.</p>
-                        </div>
-                    </div>
-                    <!-- third footer end here -->
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"
+                        pattern="^[A-Za-z0-9]{3,}@[A-Za-z]{2,}[.]{1}[A-Za-z.]{3,}$" required>
+                </div>
+                <div class="form-control" style="display: flex; flex-direction: column;">
+                    <label for="tel">Mobile Number</label>
+                    <input type="tel" id="phone" required />
+                </div>
+                <div class="form-control">
+                    <label for="txtMessage">Your Designation</label>
+                    <textarea tabindex="1" name="txtMessage" id="txtMessage" placeholder="Message"
+                        style="resize: block;"></textarea>
+                </div>
+                <div class="form-control">
+                    <div class="g-recaptcha" data-sitekey="6LfkXlgqAAAAAPHP2Vw2G2_OVk44886hSLbmbhAq"></div>
                 </div>
             </div>
             <!-- triumph immigration canada end here  -->

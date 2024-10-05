@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     // console.log("width ===>",steps.length-1)
         // progress.style.transform = `scaleX(${width})`;
         stepsContainer.style.height = steps[currentStep].offsetHeight + "px";
-        // stepIndicators.forEach((indicator,index)=>{
-        //     indicator.classList.toggle('current',currentStep === index);
-        //     indicator.classList.toggle('done',currentStep>index);
-        // })
+        stepIndicators.forEach((indicator,index)=>{
+            indicator.classList.toggle('current',currentStep === index);
+            indicator.classList.toggle('done',currentStep>index);
+        })
         
         steps.forEach((step,index)=>{
           //  console.log("first-name===>",currentStep)
@@ -38,29 +38,41 @@ document.addEventListener('DOMContentLoaded',()=>{
     nextButton.hidden = currentStep>= steps.length-1;
     submitButton.hidden = !nextButton.hidden;
   }
-  const isValidStep = ()=>{
-    const fields=steps[currentStep].querySelectorAll('input,textarea');
-    return [...fields].every(field=>field.reportValidity())
-  }
+  // const isValidStep = ()=>{
+  //   const fields=steps[currentStep].querySelectorAll('input,select');
+  //   return [...fields].every(field=>field.reportValidity())
+  // }
 
+  const isValidStep = () => {
+    const fields = steps[currentStep].querySelectorAll('input[type="radio"]');
+    // Check if there's any selected radio button in the current step
+    if (fields.length > 0) {
+        const isRadioSelected = [...fields].some(field => field.checked);
+        if (!isRadioSelected) {
+            alert('Please select at least one option before proceeding.');
+            return false;
+        }
+    }
+    return true; // Allow navigation if valid
+};
 //  event listeners
 
-const inputs = form.querySelectorAll('input,textarea');
-inputs.forEach(input=>input.addEventListener('focus',(e)=>{
-    const focusedElement=e.target;
-    // console.log("focusedElement===>",focusedElement)
-    // get the step where the focused element belongs
-    const focusedStep = [...steps].findIndex(step=>step.contains(focusedElement));
-    // console.log("focusedStep===>",focusedStep)
-    if(focusedStep !==-1 && focusedStep!==currentStep){
-       if(!isValidStep()) return; 
+// const inputs = form.querySelectorAll('input,select');
+// inputs.forEach(input=>input.addEventListener('focus',(e)=>{
+//     const focusedElement=e.target;
+//     // console.log("focusedElement===>",focusedElement)
+//     // get the step where the focused element belongs
+//     const focusedStep = [...steps].findIndex(step=>step.contains(focusedElement));
+//     console.log("focusedStep===>",focusedStep)
+//     if(focusedStep !==-1 && focusedStep!==currentStep){
+//        if(!isValidStep()) return; 
 
-        currentStep=focusedStep;
-        updateProgress()
-    }
-    stepsContainer.scrollTop=0;
-    stepsContainer.scrollLeft=0;
-}))
+//         currentStep=focusedStep;
+//         updateProgress()
+//     }
+//     stepsContainer.scrollTop=0;
+//     stepsContainer.scrollLeft=0;
+// }))
 
 form.addEventListener("submit", (e) => {
     e.preventDefault(); // prevent form submission
@@ -68,9 +80,9 @@ form.addEventListener("submit", (e) => {
     // if (!form.checkValidity()) return;
     
     const formData = new FormData(form);
-    // console.log("form ===>",formData)
+    console.log("form ===>",formData)
     // send the data somewhere
-    // console.log(Object.fromEntries(formData));
+    console.log("entries===>",Object.fromEntries(formData));
 
     submitButton.disabled = true;
     submitButton.textContent = "Submitting...";
@@ -104,36 +116,5 @@ form.addEventListener("submit", (e) => {
      }
    })
    updateProgress();
-const clickHere = document.querySelectorAll(".click_here");
-const inputField = document.querySelectorAll(".click_here + input,.click_here + select");
-console.log("inputField===>",inputField)
-// console.log("clickHere==>",clickHere)
-let currentIndex = -1; // Start at -1 since no field is open initially.
-clickHere.forEach((item, index) => {
-  item.onclick = function (e) {
-    const currentItem = e.currentTarget;
-    const currentInput = currentItem.nextElementSibling;
-    // const currentInput_height = inputField.offsetHeight+"px";
-    const inputStyle = window.getComputedStyle(currentInput);
-    
-    const inputPaddingTop = inputStyle.getPropertyValue("padding-top");
-    const inputPaddingBottom = inputStyle.getPropertyValue("padding-bottom");
-    const totalInputPadding = parseInt(inputPaddingBottom);
-    // console.log("inputPaddingCss==>", inputDisplay)
-    // Show the current input field
-    currentInput.classList.add("activeInput");
-    if(currentInput.classList.contains("activeInput")){
-      stepsContainer.style.height = steps[currentStep].offsetHeight + totalInputPadding + "px";
-      
-    }
-    // Hide the previous input field if any is open
-    if (currentIndex !== -1 && currentIndex !== index) {
-      const previousInput = clickHere[currentIndex].nextElementSibling;
-      previousInput.classList.remove("activeInput");
-    }
-    // Update the current index to track the open field
-    currentIndex = index;
-  };
-});
 })
 
